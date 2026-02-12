@@ -1,4 +1,63 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  :root {
+    /* New Fluid Typography Scale */
+    --fluid-h1: clamp(4rem, -4.8675rem + 44.3373vw, 50rem);
+    --fluid-h2: clamp(2.5rem, 2.1145rem + 1.9277vw, 4.5rem);
+    --fluid-h3: clamp(2rem, 1.7108rem + 1.4458vw, 3.5rem);
+    --fluid-h4: clamp(1.5rem, 1.4036rem + 0.4819vw, 2rem);
+    --fluid-body: clamp(1rem, 0.9398rem + 0.3012vw, 1.3125rem);
+    --handwritten: clamp(1.75rem, 1.409rem + 2.2048vw, 3.5rem);
+    
+    --fluid-nav: clamp(32px, calc(32px + (64 - 32) * ((100vw - 375px) / (1440 - 375))), 64px);
+    --fluid-grid-title: clamp(32px, calc(32px + (56 - 32) * ((100vw - 375px) / (1440 - 375))), 56px);
+    --fluid-margin: clamp(20px, calc(20px + (60 - 20) * ((100vw - 375px) / (1440 - 375))), 60px);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: 'Barlow', sans-serif;
+    font-weight: 400;
+    background-color: #000;
+    color: #1a1a1a;
+    font-size: var(--fluid-body);
+    line-height: 1.6;
+    margin: 0;
+    width: 100%;
+    min-height: 100%;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  h1 { font-family: 'Barlow Condensed', sans-serif; }
+  h2, h3 { font-family: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif; }
+  h4 { font-family: 'Barlow', sans-serif; font-weight: 400; }
+}
+
+@layer utilities {
+  .fluid-h1 { font-size: var(--fluid-h1); }
+  .fluid-h2 { font-size: var(--fluid-h2); }
+  .fluid-h3 { font-size: var(--fluid-h3); }
+  .fluid-h4 { font-size: var(--fluid-h4); }
+  .fluid-body { font-size: var(--fluid-body); }
+  .handwritten { 
+    font-family: 'Reenie Beanie', cursive; 
+    font-size: var(--handwritten);
+  }
+  
+  .mx-fluid { margin-left: var(--fluid-margin); margin-right: var(--fluid-margin); }
+  .px-fluid { padding-left: var(--fluid-margin); padding-right: var(--fluid-margin); }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #333; border-radius: 10px; border: 2px solid transparent; background-clip: content-box; }
+::-webkit-scrollbar-thumb:hover { background: #555; border: 2px solid transparent; background-clip: content-box; }
